@@ -8,6 +8,10 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Engine/World.h"
+
+#include "Interactable.h"
+#include "GameplayController.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AInventoryTutorialCharacter
@@ -76,6 +80,32 @@ void AInventoryTutorialCharacter::SetupPlayerInputComponent(class UInputComponen
 	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &AInventoryTutorialCharacter::OnResetVR);
 }
 
+
+void AInventoryTutorialCharacter::CheckForInteractables()
+{
+	FHitResult HitResult;
+
+	FVector StartTrace = FollowCamera->GetComponentLocation();
+	FVector EndTrace = (FollowCamera->GetForwardVector() * 300) + StartTrace;
+
+	FCollisionQueryParams QueryParams;
+	QueryParams.AddIgnoredActor(this);
+
+	AGameplayController* Controller = Cast<AGameplayController>(GetController());
+
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartTrace, EndTrace, ECC_Visibility, QueryParams) && Controller)
+	{
+		// Check if the item we hit was an interactable item
+		if (AInteractable* Interactable = Cast<AInteractable>(HitResult.GetActor()))
+		{
+			Controller->CurrentInteractable = Interactable;
+			return;
+		}
+	}
+
+	// If we didn't hit anything, or the thing we hit was not an interactable, se the CurrentInteractable to nullptr
+	Controller->CurrentInteractable = nullptr;
+}
 
 void AInventoryTutorialCharacter::OnResetVR()
 {
