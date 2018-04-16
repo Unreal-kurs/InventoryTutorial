@@ -14,7 +14,12 @@ class INVENTORYTUTORIAL_API AGameplayGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	
+public:
+	class UDataTable* GetItemDB() const { return ItemDB; }
 	
+protected:
+	UPROPERTY(EditDefaultsOnly)
+	class UDataTable* ItemDB;
 	
 	
 };

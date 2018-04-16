@@ -22,5 +22,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
 	
-	
+	void Interact();
+
+protected:
+	virtual void SetupInputComponent() override;
+
 };
