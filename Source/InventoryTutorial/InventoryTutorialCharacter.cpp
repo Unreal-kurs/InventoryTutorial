@@ -93,7 +93,7 @@ void AInventoryTutorialCharacter::CheckForInteractables()
 	FHitResult HitResult;
 
 	FVector StartTrace = FollowCamera->GetComponentLocation();
-	FVector EndTrace = (FollowCamera->GetForwardVector() * 300) + StartTrace;
+	FVector EndTrace = (FollowCamera->GetForwardVector() * 600) + StartTrace;
 
 	FCollisionQueryParams QueryParams;
 	QueryParams.AddIgnoredActor(this);
