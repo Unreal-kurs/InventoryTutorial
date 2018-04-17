@@ -9,7 +9,6 @@
 #include "InventoryItem.h"
 #include "GameplayController.generated.h"
 
-
 /**
  * 
  */
@@ -22,17 +21,17 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	void AddItemToInventoryByID(FName ID);
 
+	
+
 	// The Interactable that the player is currently looking at. This will be equal to nullptr if the player is not looking at something that is interactable.
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
 	class AInteractable* CurrentInteractable;
 
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
-	TArray<FInventoryItem> Inventory;
-
-	
-	void Interact();
+	TArray<FInventoryItem> Inventory;	
 
 protected:
-	virtual void SetupInputComponent() override;
+	void Interact();
 
+	virtual void SetupInputComponent() override;
 };

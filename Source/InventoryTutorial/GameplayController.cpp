@@ -3,6 +3,7 @@
 #include "GameplayController.h"
 #include "Interactable.h"
 #include "GameplayGameMode.h"
+
 #include "Engine/World.h"
 
 void AGameplayController::AddItemToInventoryByID(FName ID)
@@ -11,6 +12,11 @@ void AGameplayController::AddItemToInventoryByID(FName ID)
 	UDataTable* ItemTable = GameMode->GetItemDB();
 
 	FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(ID, "");
+
+	if (ItemToAdd)
+	{
+		Inventory.Add(*ItemToAdd);
+	}
 }
 
 void AGameplayController::Interact()
