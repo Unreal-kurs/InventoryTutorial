@@ -2,6 +2,16 @@
 
 #include "GameplayController.h"
 #include "Interactable.h"
+#include "GameplayGameMode.h"
+#include "Engine/World.h"
+
+void AGameplayController::AddItemToInventoryByID(FName ID)
+{
+	AGameplayGameMode* GameMode = Cast<AGameplayGameMode>(GetWorld()->GetAuthGameMode());
+	UDataTable* ItemTable = GameMode->GetItemDB();
+
+	FInventoryItem* ItemToAdd = ItemTable->FindRow<FInventoryItem>(ID, "");
+}
 
 void AGameplayController::Interact()
 {

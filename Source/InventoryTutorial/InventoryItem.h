@@ -22,31 +22,31 @@ public:
 	}
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FName ItemID;
+	FName ItemID;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TSubclassOf<class APickup> ItemPickup;
+	TSubclassOf<class APickup> ItemPickup;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FText Name;
+	FText Name;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FText Action;
+	FText Action;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		int32 Value;
+	int32 Value;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UTexture2D* Thumbnail;
+	UTexture2D* Thumbnail;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		FText Description;
+	FText Description;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		TArray<FCraftingInfo> CraftCombinations;
+	TArray<FCraftingInfo> CraftCombinations;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		bool bCanBeUsed;
+	bool bCanBeUsed;
 
 	bool operator==(const FInventoryItem& Item) const
 	{

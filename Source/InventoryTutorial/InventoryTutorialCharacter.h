@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Engine/DataTable.h"
-#include "InventoryItem.h"
+//#include "InventoryItem.h"
 #include "InventoryTutorialCharacter.generated.h"
 
 
