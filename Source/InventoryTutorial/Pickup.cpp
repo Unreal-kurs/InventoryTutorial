@@ -5,7 +5,9 @@
 APickup::APickup()
 {
 	PickupMesh = CreateDefaultSubobject<UStaticMeshComponent>("PickupMesh");
-
+	PickupMesh->SetMobility(EComponentMobility::Movable);
+	PickupMesh->SetSimulatePhysics(true);
 	ItemID = FName("Please enter an ID");
+	
 }
 
